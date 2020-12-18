@@ -1,0 +1,33 @@
+html,
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.container {
+  margin-top: 1rem;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+span {
+  width: 100%;
+  margin: 1rem;
+}
+
+.rangeInput {
+  width: 100%;
+  cursor: pointer;
+}
+
+.input {
+  height: 2rem;
+  width: 100%;
+}
