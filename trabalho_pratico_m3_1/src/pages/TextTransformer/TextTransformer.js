@@ -18,7 +18,7 @@ export default class TextTransformer extends React.Component {
 
     transformations = [{
         id: 1,
-        transformDescription: "Texto invertido",
+        transformDescription: "Texto invertido:",
         transformFunction: function (inputText) {
             let resultString = '';
 
@@ -33,7 +33,7 @@ export default class TextTransformer extends React.Component {
     },
     {
         id: 2,
-        transformDescription: "Texto numérico",
+        transformDescription: "Texto numérico:",
         transformFunction: function (inputText) {
             let upperInputText = inputText.toUpperCase();
             let inputArray = Array.from(upperInputText);
@@ -71,7 +71,7 @@ export default class TextTransformer extends React.Component {
         }
     }, {
         id: 3,
-        transformDescription: "CSV",
+        transformDescription: "CSV:",
         transformFunction: function (inputText) {
             let resultString = '';
 
@@ -90,7 +90,7 @@ export default class TextTransformer extends React.Component {
         }
     }, {
         id: 4,
-        transformDescription: "Slug",
+        transformDescription: "Slug:",
         transformFunction: function (inputText) {
             let resultString = '';
 
@@ -109,7 +109,7 @@ export default class TextTransformer extends React.Component {
         }
     }, {
         id: 5,
-        transformDescription: "Somente vogais",
+        transformDescription: "Somente vogais:",
         transformFunction: function (inputText) {
             let resultString = '';
 
@@ -118,7 +118,7 @@ export default class TextTransformer extends React.Component {
             const vogais = ['a', 'e', 'i', 'o', 'u', ' '];
 
             stringArray.forEach((letra) => {
-                if(vogais.includes(letra.toLowerCase())){
+                if (vogais.includes(letra.toLowerCase())) {
                     resultString += letra;
                 }
             });
@@ -127,7 +127,7 @@ export default class TextTransformer extends React.Component {
         }
     }, {
         id: 6,
-        transformDescription: "Soment consoantes",
+        transformDescription: "Soment consoantes:",
         transformFunction: function (inputText) {
             let resultString = '';
 
@@ -136,7 +136,7 @@ export default class TextTransformer extends React.Component {
             const vogais = ['a', 'e', 'i', 'o', 'u',];
 
             stringArray.forEach((letra) => {
-                if(!vogais.includes(letra.toLowerCase())){
+                if (!vogais.includes(letra.toLowerCase())) {
                     resultString += letra;
                 }
                 return letra;
@@ -146,7 +146,7 @@ export default class TextTransformer extends React.Component {
         }
     }, {
         id: 7,
-        transformDescription: "variável",
+        transformDescription: "Variável:",
         transformFunction: function (inputText) {
             let resultString = '';
             let words = inputText.toLowerCase().split(' ');
@@ -169,8 +169,11 @@ export default class TextTransformer extends React.Component {
                 <h1>react-text-transformer</h1>
 
                 <div className={css.inputContainer}>
-                    Digite um texto qualquer:
-                <input className={css.input} type="text" onChange={this.handleKeyUp}></input>
+                    <span className={css.outputDescription}>Digite um texto qualquer:</span>
+                    <div className={css.col}>
+                        <input className={css.input} type="text" onChange={this.handleKeyUp}></input>
+                        <span className={css.focusBorder}></span>
+                    </div>
                 </div>
 
                 <h2>Transformações</h2>

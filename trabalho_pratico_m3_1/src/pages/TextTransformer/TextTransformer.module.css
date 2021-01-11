@@ -1,3 +1,7 @@
+h1, h2, span, .input {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -9,10 +13,63 @@
     display: flex;
     flex-direction: column;
     margin: 2pt;
-    width: 90%;
+    width: 60%;
 }
 
 .input {
-    margin: 2pt;
+    font-size: 14pt;
+    border: 0;
+    padding: 2px 0;
+    font: 15px/24px "Lato", Arial, sans-serif;
+    color: #333333;
+    box-sizing: border-box;
     width: 90%;
+    height: 30pt;
+}
+.input:disabled {
+    background-color: #ffffff;
+}
+
+.input ~ .focusBorder {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(194, 194, 194);
+    transition: 0.4s;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input:focus ~ .focusBorder {
+    width: 100%;
+    background-color: #3de662;
+    transition: 0.4s;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.col {
+	margin-top: 12px;
+	display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+.outputDescription {
+    color: #b6b6b6
+}
+
+.icon {
+    background: 0;
+    border: 0;
+    width: 20px;
+    height: 20px;
 }
