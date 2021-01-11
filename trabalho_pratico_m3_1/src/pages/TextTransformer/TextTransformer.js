@@ -22,7 +22,7 @@ export default class TextTransformer extends React.Component {
         transformFunction: function (inputText) {
             let resultString = '';
 
-            inputText = inputText.split(" ").filter((word) => { return word.length > 0 });
+            inputText = inputText.split(" ").filter((word) => { return word.length > 0 }).reverse();
 
             inputText.forEach((word, index) => {
                 let resultArray = Array.from(word);
