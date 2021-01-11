@@ -12,7 +12,7 @@ export default class TextTransformer extends React.Component {
 
     handleKeyUp = (event) => {
         this.setState({
-            userInput: event.target.value
+            userInput: event.target.value.trim()
         })
     }
 
@@ -22,11 +22,19 @@ export default class TextTransformer extends React.Component {
         transformFunction: function (inputText) {
             let resultString = '';
 
-            let resultArray = Array.from(inputText);
-            resultArray.reverse();
-            resultArray.forEach((e) => {
-                resultString += e;
-            });
+            inputText = inputText.split(" ").filter((word) => { return word.length > 0 });
+
+            inputText.forEach((word, index) => {
+                let resultArray = Array.from(word);
+                resultArray.reverse();
+                resultArray.forEach((letter) => {
+                    resultString += letter;
+                });
+                if (index !== inputText.length) {
+                    resultString += " ";
+                }
+            })
+
 
             return resultString;
         }
@@ -35,39 +43,47 @@ export default class TextTransformer extends React.Component {
         id: 2,
         transformDescription: "Texto numérico:",
         transformFunction: function (inputText) {
-            let upperInputText = inputText.toUpperCase();
-            let inputArray = Array.from(upperInputText);
+            inputText = inputText.toUpperCase();
+
+            inputText = inputText.split(" ").filter((word) => { return word.length > 0; });
+
             let resultString = ''
+            inputText.forEach((word, index) => {
+                let inputArray = Array.from(word);
 
-            inputArray.forEach((e) => {
-                let letter = '';
-                switch (e) {
-                    case 'O':
-                        letter = '0';
-                        break;
-                    case 'L':
-                        letter = '1';
-                        break;
-                    case 'E':
-                        letter = '3';
-                        break;
-                    case 'A':
-                        letter = '4';
-                        break;
-                    case 'S':
-                        letter = '5';
-                        break;
-                    case 'T':
-                        letter = '7';
-                        break;
-                    default:
-                        letter = e;
-                        break;
+                inputArray.forEach((letterInput) => {
+                    let letter = '';
+                    switch (letterInput) {
+                        case 'O':
+                            letter = '0';
+                            break;
+                        case 'L':
+                            letter = '1';
+                            break;
+                        case 'E':
+                            letter = '3';
+                            break;
+                        case 'A':
+                            letter = '4';
+                            break;
+                        case 'S':
+                            letter = '5';
+                            break;
+                        case 'T':
+                            letter = '7';
+                            break;
+                        default:
+                            letter = letterInput;
+                            break;
+                    }
+                    resultString += letter;
+                });
+                if (index !== inputText.length) {
+                    resultString += " "
                 }
-                resultString += letter;
-            });
-
+            })
             return resultString;
+
         }
     }, {
         id: 3,
@@ -76,10 +92,10 @@ export default class TextTransformer extends React.Component {
             let resultString = '';
 
             if (inputText !== '') {
-                let words = inputText.split(' ');
+                let words = inputText.split(' ').filter((word) => { return word.length > 0; });
 
-                words.forEach((e, index) => {
-                    resultString += `"${e}"`
+                words.forEach((letter, index) => {
+                    resultString += `"${letter}"`
                     if (index < words.length - 1) {
                         resultString += ';';
                     }
@@ -95,7 +111,7 @@ export default class TextTransformer extends React.Component {
             let resultString = '';
 
             if (inputText !== '') {
-                let words = inputText.toLowerCase().split(' ');
+                let words = inputText.toLowerCase().split(' ').filter((word) => { return word.length > 0; });
 
                 words.forEach((e, index) => {
                     resultString += e;
@@ -113,15 +129,22 @@ export default class TextTransformer extends React.Component {
         transformFunction: function (inputText) {
             let resultString = '';
 
-            let stringArray = Array.from(inputText);
+            inputText = inputText.split(' ').filter((word) => { return word.length > 0; });
 
-            const vogais = ['a', 'e', 'i', 'o', 'u', ' '];
+            inputText.forEach((word, index) => {
+                let stringArray = Array.from(word);
 
-            stringArray.forEach((letra) => {
-                if (vogais.includes(letra.toLowerCase())) {
-                    resultString += letra;
+                const vogais = ['a', 'e', 'i', 'o', 'u', ' '];
+
+                stringArray.forEach((letra) => {
+                    if (vogais.includes(letra.toLowerCase())) {
+                        resultString += letra;
+                    }
+                });
+                if (index !== inputText.length) {
+                    resultString += " "
                 }
-            });
+            })
 
             return resultString;
         }
@@ -131,16 +154,22 @@ export default class TextTransformer extends React.Component {
         transformFunction: function (inputText) {
             let resultString = '';
 
-            let stringArray = Array.from(inputText);
+            inputText = inputText.split(' ').filter((word) => { return word.length > 0; });
 
-            const vogais = ['a', 'e', 'i', 'o', 'u',];
+            inputText.forEach((word, index) => {
+                let stringArray = Array.from(word);
 
-            stringArray.forEach((letra) => {
-                if (!vogais.includes(letra.toLowerCase())) {
-                    resultString += letra;
+                const vogais = ['a', 'e', 'i', 'o', 'u', ' '];
+
+                stringArray.forEach((letra) => {
+                    if (!vogais.includes(letra.toLowerCase())) {
+                        resultString += letra;
+                    }
+                });
+                if (index !== inputText.length) {
+                    resultString += " "
                 }
-                return letra;
-            });
+            })
 
             return resultString;
         }
@@ -149,7 +178,7 @@ export default class TextTransformer extends React.Component {
         transformDescription: "Variável:",
         transformFunction: function (inputText) {
             let resultString = '';
-            let words = inputText.toLowerCase().split(' ');
+            let words = inputText.toLowerCase().split(' ').filter((word) => { return word.length > 0; });
 
             words.forEach((e, index) => {
                 if (index === 0) {
@@ -171,7 +200,7 @@ export default class TextTransformer extends React.Component {
                 <div className={css.inputContainer}>
                     <span className={css.outputDescription}>Digite um texto qualquer:</span>
                     <div className={css.col}>
-                        <input className={css.input} type="text" onChange={this.handleKeyUp}></input>
+                        <input className={css.input} type="text" onChange={this.handleKeyUp} maxLength={65}></input>
                         <span className={css.focusBorder}></span>
                     </div>
                 </div>
