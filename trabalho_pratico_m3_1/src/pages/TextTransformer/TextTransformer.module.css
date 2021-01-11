@@ -70,6 +70,22 @@ h1, h2, span, .input {
 .icon {
     background: 0;
     border: 0;
+    border-color: #888888;
+    padding-bottom: 1px;
+    padding-top: 6px;
+    padding-right: 6px;
+    padding-left: 6px;
+    margin-left: 4px;
+
+}
+
+img {
     width: 20px;
     height: 20px;
+}
+
+.icon:hover {
+    border: 1px solid #888888;
+    border-radius: 4px;
+    transition: 0.2s;
 }

@@ -15,7 +15,7 @@ export default class TransformedOutput extends Component {
                         <span className={css.focusBorder}></span>
                     </div>
                     <button className={css.icon} onClick={async () => await navigator.clipboard.writeText(this.props.inputDisplay)}>
-                        <img width={20} height={20} src={CopyIcon}></img>
+                        <img alt={"Copiar Texto"} title={"Copiar Texto"} width={20} height={20} src={CopyIcon}></img>
                     </button>
                 </div>
             </div>
