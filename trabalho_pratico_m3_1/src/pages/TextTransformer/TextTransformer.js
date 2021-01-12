@@ -150,7 +150,7 @@ export default class TextTransformer extends React.Component {
         }
     }, {
         id: 6,
-        transformDescription: "Soment consoantes:",
+        transformDescription: "Somente consoantes:",
         transformFunction: function (inputText) {
             let resultString = '';
 
