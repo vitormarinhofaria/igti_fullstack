@@ -1,0 +1,16 @@
+.singleTodoItem{
+    width: 80%;
+    height: max-content;
+}
+
+.doneTodoItem {
+    background-color: rgb(85, 223, 115);
+}
+.notDoneTodoItem {
+    background-color: rgb(216, 101, 48);
+}
+
+.todoItemDate {
+    margin-right: 20px;
+    margin-left: 6px;
+}
